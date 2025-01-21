@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: 30px; /* 가로 중앙 정렬 */
     align-items: 0; /* 세로 중앙 정렬 */
-    height: 100vh; /* 전체 화면 높이 */
+    height: 100vh; 
     margin: 20px;
     font-family: Arial, sans-serif;
 }
