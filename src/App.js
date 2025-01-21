@@ -1,8 +1,15 @@
 import styles from './App.module.css';
+
+import Forms from './components/Forms.js';
+import Home from './components/Home.js';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 import BodyScore from './components/BodyScore';
 import EmotionScore from './components/EmotionScore';
 import React, { useState } from 'react';
 import Modal from "./components/Modal"
+
 
 function App() {
 
@@ -16,6 +23,16 @@ function App() {
   };
 
   return (
+
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/add" element={<Forms />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+
     <div>
       <h2>몸과 마음의 점수</h2>
       <form className={styles.form_group}>
@@ -34,6 +51,7 @@ function App() {
       </form>
       </Modal>
     </div>
+
   );
 }
 
