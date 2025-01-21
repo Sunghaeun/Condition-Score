@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div>
-      <h2>몸과 마음의 점수</h2>
+      <h2>컨디션 점수</h2>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

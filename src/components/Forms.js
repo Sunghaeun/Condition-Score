@@ -62,6 +62,7 @@ function Forms() {
           .then((response) => {
             console.log(response);
             alert("입력이 완료되었습니다.");
+            navigate('/');
           })
           .catch((error) => {
             alert("에러가 발생했습니다.");
