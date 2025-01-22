@@ -156,7 +156,7 @@ function Home() {
             <div id="responseList"></div>
             <div className={styles.gridContainer} id="gridContainer">
               {/* 지금까지 저장된 모든 셀을 표시 */}
-              {cells.map((cell, index) => (
+              {counter.map((cell, index) => (
                 <div className={styles.cell} key={index}>
                   {cell}
                 </div>
