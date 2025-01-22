@@ -63,7 +63,7 @@ function Home() {
             
             // 각 삭제 요청 사이에 지연을 두고 순차적으로 처리
             for (const item of scores) {
-                await new Promise(resolve => setTimeout(resolve, 50)); // 200ms 지연
+                await new Promise(resolve => setTimeout(resolve, 50)); // 50ms 지연
                 await axios.delete("https://678f220a49875e5a1a90a2cf.mockapi.io/conditions/" + item.id);
                 console.log("deleted ID: " + item.id);
             }
