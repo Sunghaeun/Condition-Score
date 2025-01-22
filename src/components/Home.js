@@ -28,7 +28,7 @@ function Home() {
         getDataFromJSONFile(); // 데이터 다시 불러오기
     }
 
-    function onClickDeleteBtn() {
+    function deletingAndRefresh() {
         deleteAll().then(() => {
             refreshData(); // 삭제 완료 후 화면 갱신
         });
@@ -76,6 +76,19 @@ function Home() {
             console.error("Delete error:", error);
         }
     }
+    
+    function checkMidnight() {
+        const now = new Date();
+      
+        // 시간이 자정인지 확인
+        if (now.getHours() === 0 && now.getMinutes() === 0) {
+          console.log("새 날이 밝았습니다! 모든 데이터가 초기화 됩니다!"); // 실행할 작업
+          deletingAndRefresh();
+        }
+      }
+      
+      // 매분 시간 체크
+    setInterval(checkMidnight, 59000);
 
     useEffect(() => {
         getDataFromJSONFile();
@@ -85,7 +98,7 @@ function Home() {
         <div>
             <div id="responseList"></div>
             <button type="button" onClick={onClickBtn}>Add</button>
-            <button type="button" onClick={onClickDeleteBtn}>Delete</button>
+            <button type="button" onClick={deletingAndRefresh}>Delete</button>
             <button onClick={openModal}>모달팝업</button>
             <Modal open={modalOpen} close={closeModal} header="Modal heading">
                 <form className={styles.form_group}>
