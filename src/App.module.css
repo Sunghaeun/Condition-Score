@@ -1,10 +1,13 @@
 body {
-    display: flex;
+    /* display: flex; */
     justify-content: 30px; /* 가로 중앙 정렬 */
     align-items: 0; /* 세로 중앙 정렬 */
     height: 100vh; 
-    margin: 20px;
+    width: 100vw;
+    /* margin: 20px; */
     font-family: Arial, sans-serif;
+
+   
 }
 
 .text_box {
