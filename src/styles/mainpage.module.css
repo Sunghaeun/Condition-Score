@@ -21,15 +21,19 @@
     }
     
     .logoArea {
-    display: flex;
-    background-color: #0A1E45;
-    border: 2px solid gold;
-    color: #FED37A;
-    padding: 10px 15px;
-    margin-left: 20px;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px; 
+      display: flex;
+      align-items: center;
+      background-color: #0A1E45;
+      color: #FED37A;
+      padding: 10px 15px;
+      margin-left: 20px;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
     
+    .logoImage {
+      width: 150px; 
+      height: auto; 
     }
 
     .average {
@@ -81,10 +85,11 @@
 
     
 
-    .plus-cell {
-        cursor: pointer; 
+    .plusCell {
+        cursor: pointer;
+        position: relative;
         }
-    .plus-cell::before {
+    .plusCell::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -95,9 +100,8 @@
     border-radius: 50%;
     transform: translate(-50%, -50%);
     }
-    .plus-cell::after {
+    .plusCell::after {
     content: '+';
-    border: 3px solid red;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -106,6 +110,7 @@
     font-weight: bold;
     color: #000;
     }
-        
+    
+
 
     /* bodyAvr emoAvr */
