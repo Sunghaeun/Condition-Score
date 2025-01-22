@@ -1,5 +1,7 @@
 import Forms from './components/Forms.js';
 import Home from './components/Home.js';
+import AddPage from './components/AddPage.js';
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -15,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/add" element={<Forms />} />
+          <Route path="/addpage" element={<AddPage />} />
         </Routes>
       </BrowserRouter>
 
