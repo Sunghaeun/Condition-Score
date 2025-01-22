@@ -74,7 +74,7 @@ function Home() {
       .then((response) => {
         console.log(response);
         alert("입력이 완료되었습니다.");
-        navigate('/');
+        navigate('/main');
       })
       .catch((error) => {
         alert("에러가 발생했습니다.");

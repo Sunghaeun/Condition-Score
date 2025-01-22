@@ -138,7 +138,6 @@ export default function CombinedPage() {
 
       <main className={styles.main}>
         <div style={{ marginBottom: "5px" }}>
-          <button onClick={onClickAddPage}>Add</button>
           <button onClick={deletingAndRefresh} style={{ marginLeft: "5px" }}>
             Delete
           </button>
@@ -162,7 +161,7 @@ export default function CombinedPage() {
           {!plusCellClosed && (
             <div
               className={`${styles.cell} ${styles.plusCell}`}
-              onClick={plusClick}
+              onClick={onClickAddPage}
               style={{ cursor: "pointer" }}
             />
           )}
