@@ -93,11 +93,11 @@ function Home() {
         <h2>나의 오늘의 노래 추천</h2>
         <input onChange={onChangeInput} placeholder="노래 제목을 작성해주세요 (선택) " type="text" name="recomMusic" />
       </div>
-        <button type="button" onClick={onClickBtn}>
-          Close
-        </button>
         <button onClick={(e) => postDataToJSONFile(e)} className={styles.submitButton} type="submit">
           제출
+        </button>
+        <button type="button" onClick={onClickBtn}>
+          Close
         </button>
     </form>
   )

@@ -5,16 +5,28 @@ import $ from "jquery";
 import Modal from "./Modal";
 import styles from "../style/modal.css";
 
-
 function Home() {
   const [modalOpen, setModalOpen] = useState(false);
-
+  const [bodyAvr, setBodyAvr] = useState(0);
+  const [emoAvr, setEmoAvr] = useState(0);
+    
   const openModal = () => {
     setModalOpen(true);
   };
+
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  function addBodyAvr(e) {
+    setBodyAvr(bodyAvr => bodyAvr + e);
+    console.log(bodyAvr);
+  }
+
+  function addEmoAvr(e) {
+    setEmoAvr(emoAvr => emoAvr + e);
+    console.log(emoAvr);
+  }
 
     const navigate = useNavigate();
 
@@ -34,6 +46,8 @@ function Home() {
         });
     }
 
+    let counter = 0;
+
     function getDataFromJSONFile() {
         return axios.get("https://678f220a49875e5a1a90a2cf.mockapi.io/conditions")
             .then((response) => {
@@ -41,6 +55,9 @@ function Home() {
                 console.log(scores);
                 $("#responseList").empty(); // 기존 데이터 비우기
                 scores.forEach((item) => {
+                    counter++;
+                    addBodyAvr(item.bodyScore);
+                    addEmoAvr(item.emoScore);
                     $("#responseList").append(`
                         <div class="reponse-list">
                             <span class="userName">${item.userName}</span>
@@ -53,12 +70,15 @@ function Home() {
                     `);
                 });
             })
+            .then(() => {
+                setBodyAvr(bodyAvr => Math.round((bodyAvr / counter * 10)) / 10);
+                setEmoAvr(emoAvr => Math.round((emoAvr / counter * 10)) / 10);
+            })
             .catch((error) => {
                 console.error("에러: ", error);
             });
     }
 
-    // 개선된 삭제 함수
     async function deleteAll() {
         try {
             const response = await axios.get("https://678f220a49875e5a1a90a2cf.mockapi.io/conditions");
@@ -94,8 +114,13 @@ function Home() {
         getDataFromJSONFile();
     }, []);
 
+    console.log(bodyAvr);
+
     return (
         <div>
+            <h2>컨디션 점수</h2>
+            <h3>몸 컨디션 평균: {bodyAvr}</h3>
+            <h3>마음 컨디션 평균: {emoAvr}</h3>
             <div id="responseList"></div>
             <button type="button" onClick={onClickBtn}>Add</button>
             <button type="button" onClick={deletingAndRefresh}>Delete</button>
