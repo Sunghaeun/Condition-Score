@@ -1,5 +1,3 @@
-Modal.js
-
 import React from 'react';
 import "../style/modal.css";
 
