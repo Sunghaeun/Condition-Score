@@ -123,7 +123,6 @@ function Home() {
             <h3>마음 컨디션 평균: {emoAvr}</h3>
             <div id="responseList"></div>
             <button type="button" onClick={onClickBtn}>Add</button>
-            <button type="button" onClick={deletingAndRefresh}>Delete</button>
             <button onClick={openModal}>모달팝업</button>
             <Modal open={modalOpen} close={closeModal} header="Modal heading">
                 <form className={styles.form_group}>
