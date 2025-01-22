@@ -19,7 +19,7 @@ function Home() {
     const navigate = useNavigate();
 
     function onClickBtn() {
-        navigate('/add'); 
+        navigate('/addPage'); 
     }
 
     // 삭제 후 화면 갱신을 위한 함수
@@ -43,10 +43,12 @@ function Home() {
                 scores.forEach((item) => {
                     $("#responseList").append(`
                         <div class="reponse-list">
+                            <span class="userName">${item.userName}</span>
                             <span class="bodyScore">${item.bodyScore}</span>
                             <span class="bodyReason">${item.bodyReason}</span>
                             <span class="emoScore">${item.emoScore}</span>
                             <span class="emoReason">${item.emoReason}</span>
+                            <span class="recomMusic">${item.recomMusic}</span>
                         </div>
                     `);
                 });
@@ -64,7 +66,7 @@ function Home() {
             
             // 각 삭제 요청 사이에 지연을 두고 순차적으로 처리
             for (const item of scores) {
-                await new Promise(resolve => setTimeout(resolve, 50)); // 200ms 지연
+                await new Promise(resolve => setTimeout(resolve, 1)); // 1ms 지연
                 await axios.delete("https://678f220a49875e5a1a90a2cf.mockapi.io/conditions/" + item.id);
                 console.log("deleted ID: " + item.id);
             }
