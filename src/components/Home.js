@@ -5,20 +5,21 @@ import $ from "jquery";
 import Modal from "./Modal";
 import styles from "../style/modal.css";
 
+
 function Home() {
-    const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
     const navigate = useNavigate();
 
-    const openModal = () => {
-        setModalOpen(true);
-    };
-    
-    const closeModal = () => {
-        setModalOpen(false);
-    };
-
     function onClickBtn() {
-        navigate('/add');
+        navigate('/add'); 
     }
 
     // 삭제 후 화면 갱신을 위한 함수
