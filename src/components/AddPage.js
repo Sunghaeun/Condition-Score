@@ -22,7 +22,7 @@ function Home() {
   const emoReasonRef = useRef();
 
   const onClickBtn = () => {
-    navigate(`/`);
+    navigate(`/main`);
   };
 
   const onChangeInput = (input) => {
@@ -102,5 +102,8 @@ function Home() {
     </form>
   )
 }
+
+
+
 
 export default Home
