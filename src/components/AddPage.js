@@ -88,7 +88,7 @@ function Home() {
         <h2>프로필 이름</h2>
         <input onChange={onChangeInput} placeholder="이름을 작성해주세요" type="text" name="userName" />
         <h2>프로필 이모지</h2>
-        <select name="userEmotion" className="userEmotion" onChange={onChangeInput}>
+        <select name="emoProfile" className="userEmotion" onChange={onChangeInput}>
           <option value="happy" className="userEmotionOption">😄</option>
           <option value="excitied" className="userEmotionOption">😆</option>
           <option value="cry" className="userEmotionOption">🥲</option>
