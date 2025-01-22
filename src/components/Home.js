@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
 import Modal from "./Modal";
-import styles from "../style/modal.css";
+// "styles" 폴더 아래에 있는 mainpage.module.css를 import
+import styles from '../styles/mainpage.module.css'; 
 
 function Home() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -20,12 +21,10 @@ function Home() {
 
   function addBodyAvr(e) {
     setBodyAvr(bodyAvr => bodyAvr + e);
-    console.log(bodyAvr);
   }
 
   function addEmoAvr(e) {
     setEmoAvr(emoAvr => emoAvr + e);
-    console.log(emoAvr);
   }
 
     const navigate = useNavigate();
@@ -58,21 +57,23 @@ function Home() {
                     counter++;
                     addBodyAvr(item.bodyScore);
                     addEmoAvr(item.emoScore);
-                    $("#responseList").append(`
-                        <div class="reponse-list">
-                            <span class="userName">${item.userName}</span>
-                            <span class="bodyScore">${item.bodyScore}</span>
-                            <span class="bodyReason">${item.bodyReason}</span>
-                            <span class="emoScore">${item.emoScore}</span>
-                            <span class="emoReason">${item.emoReason}</span>
-                            <span class="recomMusic">${item.recomMusic}</span>
-                        </div>
-                    `);
+                    // $("#responseList").append(`
+                    //     <div class="reponse-list">
+                    //         <span class="userName">${item.userName}</span>
+                    //         <span class="bodyScore">${item.bodyScore}</span>
+                    //         <span class="bodyReason">${item.bodyReason}</span>
+                    //         <span class="emoScore">${item.emoScore}</span>
+                    //         <span class="emoReason">${item.emoReason}</span>
+                    //         <span class="recomMusic">${item.recomMusic}</span>
+                    //     </div>
+                    // `);
                 });
             })
             .then(() => {
-                setBodyAvr(bodyAvr => Math.round((bodyAvr / counter * 10)) / 10);
-                setEmoAvr(emoAvr => Math.round((emoAvr / counter * 10)) / 10);
+                if(counter !== 0){
+                    setBodyAvr(bodyAvr => Math.round((bodyAvr / counter * 10)) / 10);
+                    setEmoAvr(emoAvr => Math.round((emoAvr / counter * 10)) / 10);
+                }
             })
             .catch((error) => {
                 console.error("에러: ", error);
@@ -101,7 +102,7 @@ function Home() {
         const now = new Date();
       
         // 시간이 자정인지 확인
-        if (now.getHours() === 0 && now.getMinutes() === 0) {
+        if (now.getHours() === 6 && now.getMinutes() === 2) {
           console.log("새 날이 밝았습니다! 모든 데이터가 초기화 됩니다!"); // 실행할 작업
           deletingAndRefresh();
         }
@@ -114,24 +115,65 @@ function Home() {
         getDataFromJSONFile();
     }, []);
 
-    console.log(bodyAvr);
+    const [cells, setCells] = useState([]);
+
+    // const plusClick = () => {
+    //     setCells((prevCells) => [...prevCells, ' ']);
+    // };
+
+    // return (
+    //     <div>
+    //         <h2>컨디션 점수</h2>
+    //         <h3>몸 컨디션 평균: {bodyAvr}</h3>
+    //         <h3>마음 컨디션 평균: {emoAvr}</h3>
+    //         <div id="responseList"></div>
+    //         <button type="button" onClick={onClickBtn}>Add</button>
+    //         <button type="button" onClick={deletingAndRefresh}>Delete</button>
+    //         <button onClick={openModal}>모달팝업</button>
+    //         <Modal open={modalOpen} close={closeModal} header="Modal heading">
+    //             <form className={styles.form_group}>
+    //                 <button className={styles.submitButton} type="submit">제출</button>
+    //             </form>
+    //         </Modal>
+    //     </div>
+    // );
 
     return (
-        <div>
-            <h2>컨디션 점수</h2>
-            <h3>몸 컨디션 평균: {bodyAvr}</h3>
-            <h3>마음 컨디션 평균: {emoAvr}</h3>
+        <div className={styles.mainbody}>
+          {/* header 영역 */}
+          <div className={styles.header}>
+            <div className={styles.logoArea}>
+              멋쟁이사자처럼 로고
+            </div>
+            <div className={styles.average}>
+              몸점수: {bodyAvr}
+              감정점수: {emoAvr}
+            </div>
+          </div>
+        
+          {/* main 영역 */}
+          <main className={styles.main}>
             <div id="responseList"></div>
-            <button type="button" onClick={onClickBtn}>Add</button>
-            <button type="button" onClick={deletingAndRefresh}>Delete</button>
-            <button onClick={openModal}>모달팝업</button>
-            <Modal open={modalOpen} close={closeModal} header="Modal heading">
-                <form className={styles.form_group}>
-                    <button className={styles.submitButton} type="submit">제출</button>
-                </form>
-            </Modal>
+            <div className={styles.gridContainer} id="gridContainer">
+              {/* 지금까지 저장된 모든 셀을 표시 */}
+              {cells.map((cell, index) => (
+                <div className={styles.cell} key={index}>
+                  {cell}
+                </div>
+              ))}
+    
+              {/* + 버튼 셀 */}
+              <div 
+                className={`${styles.cell} ${styles.plusCell}`} 
+                onClick={onClickBtn} 
+              />
+            </div>
+          </main>
+    
+          {/* footer 영역 */}
+          <footer className={styles.footer} />
         </div>
-    );
+      );
 }
 
 export default Home;
