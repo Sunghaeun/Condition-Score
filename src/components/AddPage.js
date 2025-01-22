@@ -12,17 +12,20 @@ function Home() {
     emoScore: "",
     emoReason: "",
     recomMusic: "",
+    emoProfile: ""
   });
 
   const navigate = useNavigate();
-  const userNameRef = useRef();
+  // const userName = useRef();
   const bodyScoreRef = useRef();
   const bodyReasonRef = useRef();
   const emoScoreRef = useRef();
-  const emoReasonRef = useRef();
+  // const emoReasonRef = useRef();
+  // const recomMusic = useRef();
+  // const emoProfile = useRef();
 
   const onClickBtn = () => {
-    navigate(`/main`);
+    navigate(`/`);
   };
 
   const onChangeInput = (input) => {
@@ -36,24 +39,31 @@ function Home() {
     e.preventDefault();
     if(!data.userName) {
       alert("이름을 입력해 주세요!");
-      userNameRef.current.focus();
+      bodyScoreRef.current.focus();
       return;
-    }else if(!data.bodyReason) {
+  }
+
+  if(!data.bodyReason) {
       alert("몸 컨디션에 대한 이유를 입력해 주세요!");
       bodyReasonRef.current.focus();
       return;
-    }else if(!data.bodyScore) {
-      alert("몸의 점수를 입력해 주세요!");
-      bodyScoreRef.current.focus();
-      return;
-    }else if(!data.emoScore) {
-      alert("감정의 점수를 입력해 주세요!");
-      emoScoreRef.current.focus();
-      return;
-    }else if(!data.emoReason) {
-      alert("감정 상태에 대한 이유를 입력해 주세요!");
-      emoReasonRef.current.focus();
-      return;
+  }
+    if(!data.bodyScore) {
+        alert("몸의 점수를 입력해 주세요!");
+        bodyScoreRef.current.focus();
+        return;
+    }
+
+    if(!data.bodyReason) {
+        alert("몸 컨디션에 대한 이유를 입력해 주세요!");
+        bodyReasonRef.current.focus();
+        return;
+    }
+
+    if(!data.emoScore) {
+        alert("감정의 점수를 입력해 주세요!");
+        emoScoreRef.current.focus();
+        return;
     }
 
     console.log(data);
@@ -73,12 +83,21 @@ function Home() {
   }
 
   return (
-    <form className='mainContainer'>
+    <div className='mainContainer'>
       <div className='secondContainer'>
         <h2>프로필 이름</h2>
         <input onChange={onChangeInput} placeholder="이름을 작성해주세요" type="text" name="userName" />
         <h2>프로필 이모지</h2>
+        <select name="userEmotion" className="userEmotion" onChange={onChangeInput}>
+          <option value="happy" className="userEmotionOption">😄</option>
+          <option value="excitied" className="userEmotionOption">😆</option>
+          <option value="cry" className="userEmotionOption">🥲</option>
+          <option value="yummy" className="userEmotionOption">😋</option>
+          <option value="study" className="userEmotionOption">🤓</option>
+          <option value="angry" className="userEmotionOption">😡</option>
+          <option value="sick" className="userEmotionOption">🤒</option>
 
+        </select>
         <h2>몸의 점수</h2>
         <input onChange={onChangeInput} placeholder="5점 만점" type="number" name="bodyScore" />
         <div className={styles.padding_10}>
@@ -93,17 +112,14 @@ function Home() {
         <h2>나의 오늘의 노래 추천</h2>
         <input onChange={onChangeInput} placeholder="노래 제목을 작성해주세요 (선택) " type="text" name="recomMusic" />
       </div>
-        <button onClick={(e) => postDataToJSONFile(e)} className={styles.submitButton} type="submit">
-          제출
-        </button>
         <button type="button" onClick={onClickBtn}>
           Close
         </button>
-    </form>
+        <button onClick={(e) => postDataToJSONFile(e)} className={styles.submitButton} type="submit">
+          제출
+        </button>
+    </div>
   )
 }
-
-
-
 
 export default Home
