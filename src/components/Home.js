@@ -5,7 +5,6 @@ import $ from "jquery";
 import Modal from "./Modal";
 import styles from "../style/modal.css";
 
-import Modal from "./Modal"
 
 function Home() {
   const [modalOpen, setModalOpen] = useState(false);
