@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import styles from "../style/addpage.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import logo from "../img/logo.png";
+
 
 function Home() {
 
@@ -84,11 +86,21 @@ function Home() {
 
   return (
     <div className='mainContainer'>
+       <div className="header">
+        <div className="logoArea">
+          <img
+            src={logo}
+            alt="멋쟁이사자처럼 로고"
+            className="logoImage"
+          />
+        </div>
+        
+      </div>
       <div className='secondContainer'>
-        <h2>프로필 이름</h2>
-        <input onChange={onChangeInput} placeholder="이름을 작성해주세요" type="text" name="userName" />
-        <h2>프로필 이모지</h2>
-        <select name="emoProfile" className="userEmotion" onChange={onChangeInput}>
+        <h2 className='inputBox'>프로필 이름</h2>
+        <input onChange={onChangeInput} placeholder="이름을 작성해주세요" type="text" name="userName" className='text_box inputGetBox'/>
+        <h2 className='inputBox'>프로필 이모지</h2>
+        <select name="emoProfile" className="userEmotion inputGetBox" onChange={onChangeInput} >
           <option value="happy" className="userEmotionOption">😄</option>
           <option value="excitied" className="userEmotionOption">😆</option>
           <option value="cry" className="userEmotionOption">🥲</option>
@@ -98,19 +110,25 @@ function Home() {
           <option value="sick" className="userEmotionOption">🤒</option>
 
         </select>
-        <h2>몸의 점수</h2>
-        <input onChange={onChangeInput} placeholder="5점 만점" type="number" name="bodyScore" />
-        <div className={styles.padding_10}>
-          <input onChange={onChangeInput} placeholder="이유를 작성해주세요!" className={styles.text_box} type="text" name="bodyReason" />
+
+        <div className='line'></div>
+        
+        <h2 className='inputBox'>몸의 점수</h2>
+        <input onChange={onChangeInput} placeholder="5점 만점" type="number" name="bodyScore" className='text_box inputGetBox'/>
+        <div className="padding_10">
+          <input onChange={onChangeInput} placeholder="이유를 작성해주세요!" className='text_box inputGetBox' type="text" name="bodyReason" />
         </div>  
 
-        <h2>마음의 점수</h2>
-        <input onChange={onChangeInput} placeholder="5점 만점" type="number" name="emoScore" />
-        <div className={styles.padding_10}>
-          <input onChange={onChangeInput} placeholder="이유를 작성해주세요!" className={styles.text_box} type="text" name="emoReason" />
+        <h2 className='inputBox'>마음의 점수</h2>
+        <input onChange={onChangeInput} placeholder="5점 만점" type="number" name="emoScore" className='text_box inputGetBox'/>
+        <div className="padding_10">
+          <input onChange={onChangeInput} placeholder="이유를 작성해주세요!" className='text_box inputGetBox' type="text" name="emoReason" />
         </div>
-        <h2>나의 오늘의 노래 추천</h2>
-        <input onChange={onChangeInput} placeholder="노래 제목을 작성해주세요 (선택) " type="text" name="recomMusic" />
+
+        <div className='line'></div>
+
+        <h2 className='inputBox'>나의 오늘의 노래 추천</h2>
+        <input onChange={onChangeInput} placeholder="노래 제목을 작성해주세요 (선택) " type="text" name="recomMusic" className='inputGetBox'/>
       </div>
         <button type="button" onClick={onClickBtn}>
           Close
