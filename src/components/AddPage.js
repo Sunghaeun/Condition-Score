@@ -35,49 +35,50 @@ function Home() {
     });
   };
 
+
   function postDataToJSONFile(e) {
     e.preventDefault();
-    if (!data.userName) {
-      alert("이름을 입력해 주세요!");
-      bodyScoreRef.current.focus();
-      return;
-    } else if (!data.bodyReason) {
-  }
+  //   if (!data.userName) {
+  //     alert("이름을 입력해 주세요!");
+  //     bodyScoreRef.current.focus();
+  //     return;
+  //   } else if (!data.bodyReason) {
+  // }
 
-  if(!data.bodyReason) {
-      alert("몸 컨디션에 대한 이유를 입력해 주세요!");
-      bodyReasonRef.current.focus();
-      return;
-    } else if (!data.bodyScore) {
-      alert("몸의 점수를 입력해 주세요!");
-      bodyScoreRef.current.focus();
-      return;
-    } else if (!data.emoScore) {
-      alert("감정의 점수를 입력해 주세요!");
-      emoScoreRef.current.focus();
-      return;
-    } else if (!data.emoReason) {
-      alert("감정 상태에 대한 이유를 입력해 주세요!");
-      emoReasonRef.current.focus();
-      return;
-  }
-    if(!data.bodyScore) {
-        alert("몸의 점수를 입력해 주세요!");
-        bodyScoreRef.current.focus();
-        return;
-    }
+  // if(!data.bodyReason) {
+  //     alert("몸 컨디션에 대한 이유를 입력해 주세요!");
+  //     bodyReasonRef.current.focus();
+  //     return;
+  //   } else if (!data.bodyScore) {
+  //     alert("몸의 점수를 입력해 주세요!");
+  //     bodyScoreRef.current.focus();
+  //     return;
+  //   } else if (!data.emoScore) {
+  //     alert("감정의 점수를 입력해 주세요!");
+  //     emoScoreRef.current.focus();
+  //     return;
+  //   } else if (!data.emoReason) {
+  //     alert("감정 상태에 대한 이유를 입력해 주세요!");
+  //     emoReasonRef.current.focus();
+  //     return;
+  // }
+  //   if(!data.bodyScore) {
+  //       alert("몸의 점수를 입력해 주세요!");
+  //       bodyScoreRef.current.focus();
+  //       return;
+  //   }
 
-    if(!data.bodyReason) {
-        alert("몸 컨디션에 대한 이유를 입력해 주세요!");
-        bodyReasonRef.current.focus();
-        return;
-    }
+  //   if(!data.bodyReason) {
+  //       alert("몸 컨디션에 대한 이유를 입력해 주세요!");
+  //       bodyReasonRef.current.focus();
+  //       return;
+  //   }
 
-    if(!data.emoScore) {
-        alert("감정의 점수를 입력해 주세요!");
-        emoScoreRef.current.focus();
-        return;
-    }
+  //   if(!data.emoScore) {
+  //       alert("감정의 점수를 입력해 주세요!");
+  //       emoScoreRef.current.focus();
+  //       return;
+  //   }
 
     axios.post("https://678f220a49875e5a1a90a2cf.mockapi.io/conditions", data, {
       headers: { "Content-Type": "application/json" },
@@ -101,6 +102,8 @@ function Home() {
             src={logo}
             alt="멋쟁이사자처럼 로고"
             className="logoImage"
+            onClick={onClickBtn}
+            style={{ cursor: "pointer" }}
           />
         </div>
         
