@@ -32,7 +32,7 @@
 .modal > section > header {
   position: relative;
   padding: 16px 64px 16px 16px;
-  background-color: #f1f1f1;
+  background-color: #fffaf1;
   font-weight: 700;
   padding-top: 0px;
   padding-bottom: 30px;
@@ -46,11 +46,12 @@
   border-radius: 50%;
   width:70px;
   height:70px;
+  margin-left: 10px;
 }
 
 .modalProfileName{
   padding-left: 30px;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .modalProfileDate{
@@ -78,13 +79,16 @@
 
 
 .modalMusicBox{
-  border: green solid 1px;
-  border-radius: 20px;
+  border: #FED37A solid 1px; 
+  border-radius: 10px;
   width: 300px;
   height: 50px;
   margin-left: 50px;
   padding:10px;
   padding-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 
@@ -95,7 +99,7 @@
 .modal > section > footer button {
   padding: 6px 12px;
   color: #fff;
-  background-color: #6c757d;
+  background-color: rgb(255, 250, 241,0.3);
   border-radius: 5px;
   font-size: 13px;
 }
@@ -116,6 +120,10 @@
   padding-top: 0px;
 }
 
+.close{
+  margin: 20px;
+}
+
 @keyframes modal-show {
   from {
     opacity: 0;
@@ -133,4 +141,18 @@
   to {
     opacity: 1;
   }
+}
+
+a{
+  text-decoration: none;
+  color: #0A1E45;
+  padding-left: 20px;
+
+}
+
+.youtubePhotoSize{
+  width:30px;
+  height:30px;
+  margin-right: 20px;
+  opacity: 0.5;
 }

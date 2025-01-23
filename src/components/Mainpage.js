@@ -13,6 +13,17 @@ export default function CombinedPage() {
   const [selectedData, setSelectedData] = useState(null);
   const navigate = useNavigate();
 
+
+  function emojiProfile(profile) {
+    if (profile === "happy") return "😄";
+    if (profile === "excitied") return "😆";
+    if (profile === "cry") return "🥲";
+    if (profile === "yummy") return "😋";
+    if (profile === "study") return "🤓";
+    if (profile === "angry") return "😡";
+    if (profile === "sick") return "🤒";
+    return "🤷‍♀️";
+  }
   
 // 1) API 호출 + 평균 계산
 
@@ -134,6 +145,8 @@ export default function CombinedPage() {
               onClick={() => handleCellClick(item)}
               style={{ cursor: "pointer" }}
             >
+              <span className={styles.profileEmojiStyle}>{emojiProfile(item.emoProfile)}</span>
+
               <strong>{item.userName}</strong>
               {/* 필요하다면 bodyScore, emoScore 등을 간단히 표시해도 됩니다. */}
             </div>

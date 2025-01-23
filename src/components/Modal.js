@@ -1,5 +1,6 @@
 import "../style/modal.css";
 import React, { useState, useEffect } from "react";
+import sound from "../img/sound.png";
 
 
 const Modal = (props) => {
@@ -51,9 +52,9 @@ const Modal = (props) => {
                 <span className="modalProfilePicture">{emoji}</span>
               </div>
               <h2 className='modalProfileName'>{props.data.userName ? props.data.userName : "Loading..."}</h2>
-              <button className="close" onClick={close}>
+              {/* <button className="close" onClick={close}>
               &times;
-            </button>
+            </button> */}
             </div>
           </header>
           <main>
@@ -68,7 +69,12 @@ const Modal = (props) => {
             ))}
             <p className='reasonBoxPadding'>{props.data ? props.data.emoReason : "Loading..."}</p>
 
-            <div className='modalMusicBox'>{props.data ? props.data.recomMusic : "Loading..."}</div>
+            <div className='modalMusicBox'>
+              <a href={`https://www.youtube.com/results?search_query=${props.data.recomMusic}`} target="_blank">
+                {props.data ? props.data.recomMusic : "Loading..."}
+              </a>
+              <img src={sound} className="youtubePhotoSize"/>
+            </div>
 
           </main>
           <footer>

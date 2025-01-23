@@ -8,12 +8,6 @@
   padding-left: 0px;
 }
 
-.text_box {
-  width: 700px;
-  height: 50px;
-  padding: 10px;
-}
-
 .mainContainer {
   display: flex;
   flex-wrap: wrap;
@@ -41,7 +35,7 @@ input{
 
 .userEmotion{
   width: 150px;
-  height: 80px;
+  height: 70px;
   font-size: 50px;
 }
 
@@ -79,12 +73,34 @@ input{
     padding:30px;
     padding-left: 0px;
   }
+
+  .inputBoxProfile{
+    width: 350px;
+    margin-top: 32px;
+  }
  
   .inputGetBox{
     border-style: none;
     border: 1.5px #757575 solid;
     border-radius: 10px;
-    
+    padding-left: 5px;
+  }
+
+  
+  .text_box {
+    width: 700px;
+    height: 50px;
+    padding: 10px;
+  }
+
+  .profileNameStyle{
+    border-style: none;
+    border: 1.5px #757575 solid;
+    border-radius: 10px;
+    width: 300px;
+    height: 70px;
+    padding: 10px;
+    margin-top: 28px;
   }
 
   .line{
@@ -111,4 +127,19 @@ input{
     display: flex;
 
     padding-top: 50px;
+  }
+
+  .profileBox{
+    display: flex;
+
+  }
+
+  .profileNameBox{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profileEmojiBox{
+    display: flex;
+    flex-direction: column;
   }

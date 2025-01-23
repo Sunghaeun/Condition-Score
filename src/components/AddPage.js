@@ -109,19 +109,25 @@ function Home() {
         
       </div>
       <div className='secondContainer'>
-        <h2 className='inputBox'>프로필 이름</h2>
-        <input onChange={onChangeInput} placeholder="이름을 작성해주세요" type="text" name="userName" className='text_box inputGetBox'/>
-        <h2 className='inputBox'>프로필 이모지</h2>
-        <select name="emoProfile" className="userEmotion inputGetBox" onChange={onChangeInput} >
-          <option value="happy" className="userEmotionOption">😄</option>
-          <option value="excitied" className="userEmotionOption">😆</option>
-          <option value="cry" className="userEmotionOption">🥲</option>
-          <option value="yummy" className="userEmotionOption">😋</option>
-          <option value="study" className="userEmotionOption">🤓</option>
-          <option value="angry" className="userEmotionOption">😡</option>
-          <option value="sick" className="userEmotionOption">🤒</option>
-
-        </select>
+        <div className="profileBox">
+          <div className="profileNameBox">
+            <h2 className='inputBoxProfile'>프로필 이름</h2>
+            <input onChange={onChangeInput} placeholder="이름을 작성해주세요" type="text" name="userName" className='profileNameStyle'/>
+          </div>
+          <div className="profileEmojiBox">
+            <h2 className='inputBox'>프로필 이모지</h2>
+            <select name="emoProfile" className="userEmotion inputGetBox" onChange={onChangeInput} >
+              <option value="happy" className="userEmotionOption">😄</option>
+              <option value="excitied" className="userEmotionOption">😆</option>
+              <option value="cry" className="userEmotionOption">🥲</option>
+              <option value="yummy" className="userEmotionOption">😋</option>
+              <option value="study" className="userEmotionOption">🤓</option>
+              <option value="angry" className="userEmotionOption">😡</option>
+              <option value="sick" className="userEmotionOption">🤒</option>
+            </select>
+          </div>
+        </div>
+        
 
         <div className='line'></div>
 
@@ -140,7 +146,7 @@ function Home() {
         <div className='line'></div>
 
         <h2 className='inputBox'>나의 오늘의 노래 추천</h2>
-        <input onChange={onChangeInput} placeholder="노래 제목을 작성해주세요 (선택) " type="text" name="recomMusic" className='inputGetBox'/>
+        <input onChange={onChangeInput} placeholder="  노래 제목을 작성해주세요" type="text" name="recomMusic" className='inputGetBox'/>
 
         <div className='buttonContainer'>
       <button type="button" onClick={onClickBtn} className='buttonStyle'>

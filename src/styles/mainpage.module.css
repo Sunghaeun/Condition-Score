@@ -78,6 +78,7 @@
   background-color: #0A1E45;
   color: #FED37A;
   transform: translateY(-5px); 
+  box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -157,4 +158,9 @@ button:disabled {
   color: #666;
   cursor: not-allowed;
   box-shadow: none;
+}
+.profileEmojiStyle{
+  /* transform: scale(2, 2); */
+  font-size: 30px;
+  padding-right: 10px;
 }
