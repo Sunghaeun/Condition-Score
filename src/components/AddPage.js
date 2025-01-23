@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../style/addpage.css";
+import logo from "../img/logo.png"
 
 function Home() {
   const [data, setData] = useState({
@@ -19,12 +20,12 @@ function Home() {
   const bodyScoreRef = useRef();
   const bodyReasonRef = useRef();
   const emoScoreRef = useRef();
-  // const emoReasonRef = useRef();
+  const emoReasonRef = useRef();
   // const recomMusic = useRef();
   // const emoProfile = useRef();
 
   const onClickBtn = () => {
-    navigate(`/main`);
+    navigate(`/`);
   };
 
   const onChangeInput = (input) => {
@@ -83,8 +84,8 @@ function Home() {
     })
       .then((response) => {
         alert("입력이 완료되었습니다.");
-        navigate('/main');
-        navigate('/main');
+        navigate('/');
+        navigate('/');
       })
       .catch((error) => {
         alert("에러가 발생했습니다.");
