@@ -93,3 +93,22 @@ input{
     margin-bottom:40px;
 
   }
+
+  .buttonStyle{
+    padding: 6px 12px;
+    color: #FED37A;
+    background-color: #0A1E45;
+    border-radius: 5px;
+    font-size: 13px;
+    border:none;
+
+    margin-right: 20px;
+    width:100px;
+    height: 40px;
+  }
+
+  .buttonContainer{
+    display: flex;
+
+    padding-top: 50px;
+  }

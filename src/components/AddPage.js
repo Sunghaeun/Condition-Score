@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styles from "../style/addpage.css";
+import "../style/addpage.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../img/logo.png";
@@ -27,7 +27,7 @@ function Home() {
   // const emoProfile = useRef();
 
   const onClickBtn = () => {
-    navigate(`/`);
+    navigate(`/main`);
   };
 
   const onChangeInput = (input) => {
@@ -112,7 +112,7 @@ function Home() {
         </select>
 
         <div className='line'></div>
-        
+
         <h2 className='inputBox'>몸의 점수</h2>
         <input onChange={onChangeInput} placeholder="5점 만점" type="number" name="bodyScore" className='text_box inputGetBox'/>
         <div className="padding_10">
@@ -129,13 +129,17 @@ function Home() {
 
         <h2 className='inputBox'>나의 오늘의 노래 추천</h2>
         <input onChange={onChangeInput} placeholder="노래 제목을 작성해주세요 (선택) " type="text" name="recomMusic" className='inputGetBox'/>
-      </div>
-        <button type="button" onClick={onClickBtn}>
+
+        <div className='buttonContainer'>
+      <button type="button" onClick={onClickBtn} className='buttonStyle'>
           Close
         </button>
-        <button onClick={(e) => postDataToJSONFile(e)} className={styles.submitButton} type="submit">
+        <button onClick={(e) => postDataToJSONFile(e)} className='buttonStyle' type="submit">
           제출
         </button>
+      </div>
+      </div>
+      
     </div>
   )
 }
