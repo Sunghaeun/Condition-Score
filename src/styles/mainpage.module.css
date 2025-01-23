@@ -1,116 +1,156 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
-  
-    body {
-      font-family: Noto Sans Korean;
-      }
-
-  .mainbody{
-    display: flex;
-    flex-direction: column;
-    /* margin: 20px; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-    .header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #0A1E45; 
-    height: 60px;
-    }
-    
-    .logoArea {
-      display: flex;
-      align-items: center;
-      background-color: #0A1E45;
-      color: #FED37A;
-      padding: 10px 15px;
-      margin-left: 20px;
-      border-top-right-radius: 0;
-      border-top-left-radius: 0;
-    }
-    
-    .logoImage {
-      width: 150px; 
-      height: auto; 
-    }
 
-    .average {
-      display: flex;
-      border: 2px solid white; 
-      color: #FED37A;
-      padding: 15px 30px;
-      text-align: left;
-    }
+body {
+  font-family: 'Noto Sans Korean', sans-serif;
+}
 
- 
-    .main {
-      width: 100%;
-      min-height: 100vh;       /* 세로 길이 (필요시) */
-      background-color: #FED37A;
-      margin: 0;
-      padding: 30px;              /* 원하는 여백만큼 조정 */
-      box-sizing: border-box;   /* 권장 */
-    }
-      
-      .gridContainer {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 150px;
-        grid-gap: 40px;
-      }
+.mainbody {
+  display: flex;
+  flex-direction: column;
+}
 
 
-    .cell {
-    background-color: #fff;
-    border-radius: 50px;
-    position: relative; 
-    cursor: pointer;
-    }
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #0A1E45;
+  height: 60px;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  background-color: #0A1E45;
+  color: #FED37A;
+  padding: 10px 15px;
+  margin-left: 20px;
+}
+
+.logoImage {
+  width: 150px;
+  height: auto;
+}
+
+.average {
+  display: flex;
+  color: #FED37A;
+  padding: 15px 30px;
+  text-align: left;
+}
 
 
-    .cell:hover{
-        background-color: #0A1E45;
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FED37A;
+  margin: 0;
+  padding: 30px;
+  box-sizing: border-box;
+}
 
-    }
-
-    footer {
-        display: flex;
-        align-items: center;
-        background-color: #0A1E45; 
-        height: 60px;
-        }
-
-    
-
-    .plusCell {
-        cursor: pointer;
-        position: relative;
-        }
-    .plusCell::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    border: 3px solid #000;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    }
-    .plusCell::after {
-    content: '+';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    font-weight: bold;
-    color: #000;
-    }
-    
+.gridContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 150px;
+  grid-gap: 40px;
+}
 
 
-    /* bodyAvr emoAvr */
+.cell {
+  background-color: #fff;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  padding: 20px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.cell:hover {
+  background-color: #0A1E45;
+  color: #FED37A;
+  transform: translateY(-5px); 
+}
+
+
+.cell strong {
+  font-size: 25px; 
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around
+}
+
+.cell div {
+  font-size: 14px;
+  color: #333;
+  margin: 5px 0;
+}
+
+.cell div span {
+  font-weight: bold;
+  color: #007bff; 
+}
+
+.cell .recomMusic {
+  font-size: 12px;
+  color: #888;
+  font-style: italic;
+}
+
+
+
+
+footer {
+  display: flex;
+  align-items: center;
+  background-color: #0A1E45;
+  color: #fff;
+  height: 60px;
+  justify-content: center;
+  font-size: 14px;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: space-around; 
+  align-items: center;       
+  padding: 10px 20px;
+  margin-bottom: 40px; 
+}
+
+button {
+  padding: 30px 650px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #FED37A;
+  background-color: #0A1E45;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 20px;
+}
+
+
+button:hover {
+  background-color: #475361;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #003f7f;
+  transform: scale(0.95);
+}
+
+button:disabled {
+  background-color: #c0c0c0;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}

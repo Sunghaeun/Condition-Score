@@ -1,13 +1,10 @@
 import React, { useRef, useState } from 'react';
-import "../style/addpage.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import logo from "../img/logo.png";
-
+import styles from "../style/addpage.css";
 
 function Home() {
-
-  const[data, setData] = useState({
+  const [data, setData] = useState({
     userName: "",
     bodyScore: "",
     bodyReason: "",
@@ -39,15 +36,28 @@ function Home() {
 
   function postDataToJSONFile(e) {
     e.preventDefault();
-    if(!data.userName) {
+    if (!data.userName) {
       alert("이름을 입력해 주세요!");
       bodyScoreRef.current.focus();
       return;
+    } else if (!data.bodyReason) {
   }
 
   if(!data.bodyReason) {
       alert("몸 컨디션에 대한 이유를 입력해 주세요!");
       bodyReasonRef.current.focus();
+      return;
+    } else if (!data.bodyScore) {
+      alert("몸의 점수를 입력해 주세요!");
+      bodyScoreRef.current.focus();
+      return;
+    } else if (!data.emoScore) {
+      alert("감정의 점수를 입력해 주세요!");
+      emoScoreRef.current.focus();
+      return;
+    } else if (!data.emoReason) {
+      alert("감정 상태에 대한 이유를 입력해 주세요!");
+      emoReasonRef.current.focus();
       return;
   }
     if(!data.bodyScore) {
@@ -68,14 +78,12 @@ function Home() {
         return;
     }
 
-    console.log(data);
-    
     axios.post("https://678f220a49875e5a1a90a2cf.mockapi.io/conditions", data, {
-        headers: { "Content-Type": "application/json" },
-      })
+      headers: { "Content-Type": "application/json" },
+    })
       .then((response) => {
-        console.log(response);
         alert("입력이 완료되었습니다.");
+        navigate('/main');
         navigate('/main');
       })
       .catch((error) => {
@@ -144,4 +152,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home;

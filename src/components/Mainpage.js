@@ -9,16 +9,16 @@ export default function CombinedPage() {
   const [conditions, setConditions] = useState([]);
   const [bodyAvr, setBodyAvr] = useState(0);
   const [emoAvr, setEmoAvr] = useState(0);
-  const [plusCellClosed, setPlusCellClosed] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
   const navigate = useNavigate();
 
+  
+// 1) API 호출 + 평균 계산
+
   const fetchConditions = async () => {
     try {
-      const res = await axios.get(
-        "https://678f220a49875e5a1a90a2cf.mockapi.io/conditions"
-      );
+      const res = await axios.get("https://678f220a49875e5a1a90a2cf.mockapi.io/conditions");
       const data = res.data;
       setConditions(data);
       computeAverage(data);
@@ -43,11 +43,12 @@ export default function CombinedPage() {
     setEmoAvr(Math.round((totalEmo / dataArray.length) * 10) / 10);
   };
 
+  
+  // 2) 전체 삭제
+
   const deleteAll = async () => {
     try {
-      const res = await axios.get(
-        "https://678f220a49875e5a1a90a2cf.mockapi.io/conditions"
-      );
+      const res = await axios.get("https://678f220a49875e5a1a90a2cf.mockapi.io/conditions");
       const scores = res.data;
       for (const item of scores) {
         await new Promise((resolve) => setTimeout(resolve, 1));
@@ -65,6 +66,9 @@ export default function CombinedPage() {
     fetchConditions();
   };
 
+
+  // 3) 자정 체크 (매분마다)
+
   const checkMidnight = () => {
     const now = new Date();
     if (now.getHours() === 0 && now.getMinutes() === 0) {
@@ -78,48 +82,30 @@ export default function CombinedPage() {
     return () => clearInterval(intervalId);
   }, []);
 
+
+  // 4) 모달 열기/닫기
+
   const openModal = () => setModalOpen(true);
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  const closeModal = () => setModalOpen(false);
 
-  const plusClick = () => {
-    setSelectedData(null);
-    openModal();
-  };
 
-  const handleCellClick = (item) => {
+  // 5) 셀 클릭 → 모달
+    const handleCellClick = (item) => {
     setSelectedData(item);
     openModal();
   };
 
-  const handleAdd = () => {
-    setConditions((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        userName: "새 사용자",
-        bodyScore: 3,
-        bodyReason: "New reason",
-        emoScore: 4,
-        emoReason: "New reason",
-        recomMusic: "New music",
-      },
-    ]);
-    closeModal();
-  };
 
-  const handleCloseCell = () => {
-    setPlusCellClosed(true);
-    closeModal();
-  };
-
+  // 6) Add 페이지 이동
   const onClickAddPage = () => {
     navigate("/addPage");
   };
 
+
+  // 7) 렌더링
   return (
     <div className={styles.mainbody}>
+      {/* 헤더 */}
       <div className={styles.header}>
         <div className={styles.logoArea}>
           <img
@@ -130,17 +116,14 @@ export default function CombinedPage() {
         </div>
         <div className={styles.average}>
           <span>몸점수 평균: {bodyAvr}</span>
-          <span style={{ marginLeft: "5px" }}>
-            마음점수 평균: {emoAvr}
-          </span>
+          <span style={{ marginLeft: "5px" }}>마음점수 평균: {emoAvr}</span>
         </div>
       </div>
 
+      {/* 메인 */}
       <main className={styles.main}>
-        <div style={{ marginBottom: "5px" }}>
-          <button onClick={deletingAndRefresh} style={{ marginLeft: "5px" }}>
-            Delete
-          </button>
+        <div className={styles.buttonContainer}>
+          <button onClick={onClickAddPage}>Add</button>
         </div>
 
         <div className={styles.gridContainer}>
@@ -152,30 +135,20 @@ export default function CombinedPage() {
               style={{ cursor: "pointer" }}
             >
               <strong>{item.userName}</strong>
-              <div>몸: {item.bodyScore} / {item.bodyReason}</div>
-              <div>마음: {item.emoScore} / {item.emoReason}</div>
-              <div>음악: {item.recomMusic}</div>
+              {/* 필요하다면 bodyScore, emoScore 등을 간단히 표시해도 됩니다. */}
             </div>
           ))}
-
-          {!plusCellClosed && (
-            <div
-              className={`${styles.cell} ${styles.plusCell}`}
-              onClick={onClickAddPage}
-              style={{ cursor: "pointer" }}
-            />
-          )}
         </div>
       </main>
 
-      <footer className={styles.footer}>Footer</footer>
+      {/* 푸터 */}
+      <footer className={styles.footer}></footer>
 
+      {/* 모달 */}
       <Modal
         open={modalOpen}
         close={closeModal}
         data={selectedData}
-        handleAdd={handleAdd}
-        handleCloseCell={handleCloseCell}
       />
     </div>
   );
