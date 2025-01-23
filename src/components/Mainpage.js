@@ -116,7 +116,7 @@ export default function CombinedPage() {
         </div>
         <div className={styles.average}>
           <span>몸점수 평균: {bodyAvr}</span>
-          <span style={{ marginLeft: "5px" }}>마음점수 평균: {emoAvr}</span>
+          <span style={{ marginLeft: "15px" }}>마음점수 평균: {emoAvr}</span>
         </div>
       </div>
 
