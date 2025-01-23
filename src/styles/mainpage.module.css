@@ -2,10 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: 'Noto Sans Korean', sans-serif;
+  font-family: "IBM Plex Sans KR", serif;
+  font-weight: 600;
 }
 
 .mainbody {
@@ -69,6 +67,11 @@ body {
   padding: 20px; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   transition: background-color 0.2s ease, transform 0.2s ease;
+
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .cell:hover {
