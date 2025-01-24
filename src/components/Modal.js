@@ -10,10 +10,11 @@ const Modal = (props) => {
  
   
   const { open, close, data } = props;
-  const [emoji, setEmoji] = useState("Loading...");
+  const [emoji, setEmoji] = useState("😄");
 
   // 이모지를 매핑하는 함수
   const setUserEmoji = (profile) => {
+
     if (profile === "happy") {
       setEmoji("😄");
     } else if (profile === "excitied") {
@@ -29,8 +30,9 @@ const Modal = (props) => {
     } else if (profile === "sick") {
       setEmoji("🤒");
     } else {
-      setEmoji("🤷‍♀️"); 
+      setEmoji("😄"); 
     }
+
   };
 
   // props.data.emoProfile 값이 변경될 때마다 이모지 업데이트
@@ -52,6 +54,7 @@ const Modal = (props) => {
                 <span className="modalProfilePicture">{emoji}</span>
               </div>
               <h2 className='modalProfileName'>{props.data.userName ? props.data.userName : "Loading..."}</h2>
+              {console.log(props.data)}
               {/* <button className="close" onClick={close}>
               &times;
             </button> */}

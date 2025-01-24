@@ -91,7 +91,7 @@ const averBox3 = () => {
     if (profile === "study") return "🤓";
     if (profile === "angry") return "😡";
     if (profile === "sick") return "🤒";
-    return "🤷‍♀️";
+    return "😄";
   }
   
 // 1) API 호출 + 평균 계산
@@ -175,6 +175,7 @@ const averBox3 = () => {
   // 5) 셀 클릭 → 모달
     const handleCellClick = (item) => {
     setSelectedData(item);
+    console.log(item.emoProfile);
     openModal();
     document.body.style.overflow = 'hidden';
   };
