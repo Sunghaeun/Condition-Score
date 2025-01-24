@@ -166,13 +166,17 @@ const averBox3 = () => {
   // 4) 모달 열기/닫기
 
   const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const closeModal = () => {
+    setModalOpen(false);
+    document.body.style.removeProperty('overflow');
+  };
 
 
   // 5) 셀 클릭 → 모달
     const handleCellClick = (item) => {
     setSelectedData(item);
     openModal();
+    document.body.style.overflow = 'hidden';
   };
 
 
