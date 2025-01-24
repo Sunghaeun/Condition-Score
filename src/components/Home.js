@@ -119,8 +119,8 @@ function Home() {
     return (
         <div>
             <h2>컨디션 점수</h2>
-            <h3>몸 컨디션 평균: {bodyAvr}</h3>
-            <h3>마음 컨디션 평균: {emoAvr}</h3>
+            <h3> 💪 average: {bodyAvr}</h3>
+            <h3> 🩷 average: {emoAvr}</h3>
             <div id="responseList"></div>
             <button type="button" onClick={onClickBtn}>Add</button>
             <button onClick={openModal}>모달팝업</button>

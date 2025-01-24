@@ -4,6 +4,8 @@ import axios from "axios";
 import Modal from "./Modal";
 import styles from "../styles/mainpage.module.css";
 import logo from "../img/logo.png";
+import Swal from 'sweetalert2';
+
 
 export default function CombinedPage() {
   const [conditions, setConditions] = useState([]);
@@ -12,8 +14,75 @@ export default function CombinedPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
   const navigate = useNavigate();
+  
+
+// 0.1) avr 클릭시 alert
+const handleDivClick = () => {
+  const allAvr = bodyAvr + emoAvr;
+  if (allAvr>=8){
+    Swal.fire({
+      title: '오늘은 모두가 컨디션이 좋아요 !',
+      text: '오늘도 파이팅 🎉!!',
+      icon: 'success',
+      confirmButtonText: '확인',
+      confirmButtonColor: '#0A1E45'
+      
+    });
+  } else if (allAvr<8 && allAvr >= 6){
+    Swal.fire({
+      title: '기분 좋은 하루가 될 것 같아요 !',
+      text: '열심히 해봅시다 파이팅 !!',
+      icon: 'success',
+      confirmButtonText: '확인',
+      confirmButtonColor: '#0A1E45'
+    });
+  } else if (allAvr < 6){
+    Swal.fire({
+      title: '시작 전 잠시 편의점을 다녀올까요?!',
+      text: '기분 전환하고 파이팅 해봅시다 !',
+      icon: 'error',
+      confirmButtonText: '확인',
+      confirmButtonColor: '#0A1E45'
+    });
+  }
+};
+
+//테스트용 avr alert
+//4점이상
+const averBox1 = () => {
+  Swal.fire({
+    title: '오늘은 모두가 컨디션이 좋아요 !',
+    text: '오늘도 파이팅 🎉!!',
+    icon: 'success',
+    confirmButtonText: '확인',
+    confirmButtonColor: '#0A1E45'
+  });
+};
+//3~4점
+const averBox2 = () => {
+  Swal.fire({
+    title: '기분 좋은 하루가 될 것 같아요 !',
+      text: '열심히 해봅시다 파이팅 !!',
+      icon: 'success',
+      confirmButtonText: '확인',
+      confirmButtonColor: '#0A1E45'
+  });
+};
+//평균 3점이하
+const averBox3 = () => {
+  Swal.fire({
+    title: '시작 전 잠시 편의점을 다녀올까요?!',
+      text: '기분 전환하고 파이팅 해봅시다 !',
+      icon: 'error',
+      confirmButtonText: '확인',
+      confirmButtonColor: '#0A1E45'
+  });
+};
 
 
+
+
+// 0) 컨디션 이모지 띄우기
   function emojiProfile(profile) {
     if (profile === "happy") return "😄";
     if (profile === "excitied") return "😆";
@@ -112,6 +181,22 @@ export default function CombinedPage() {
     navigate("/addPage");
   };
 
+//   // 8) alert
+
+// const onClickAverage = () => {
+//   const allAvr = bodyAvr + emoAvr;
+//   if (allAvr>8){
+//     alert(`다들 컨디션이 좋은 날이네요 ! 
+// 오늘도 파이팅 !!`);
+//   } else if (allAvr<8 && allAvr > 6){
+//     alert(`오늘도 왠지 기분 좋은 하루가 될 것 같아요 !
+// 열심히 해봅시다 파이팅 !!`);
+//   } else if (allAvr < 6){
+//     alert(`시작 전 잠시 편의점을 다녀올까요?!
+// 기분 전환하고 파이팅 해봅시다 !`);
+//   }
+
+// };
 
   // 7) 렌더링
   return (
@@ -125,9 +210,9 @@ export default function CombinedPage() {
             className={styles.logoImage}
           />
         </div>
-        <div className={styles.average}>
-          <span>몸점수 평균: {bodyAvr}</span>
-          <span style={{ marginLeft: "15px" }}>마음점수 평균: {emoAvr}</span>
+        <div className={styles.average} onClick={handleDivClick}>
+          <span>💪 average: {bodyAvr}</span>
+          <span style={{ marginLeft: "15px" }}>🩷 average: {emoAvr}</span>
         </div>
       </div>
 
@@ -152,10 +237,17 @@ export default function CombinedPage() {
             </div>
           ))}
         </div>
+        
       </main>
 
       {/* 푸터 */}
-      <footer className={styles.footer}></footer>
+      <footer className={styles.footer}>
+        
+          <span style={{color:"#FED37A", paddingLeft:"20px", paddingRight:"20px",}} onClick={averBox1}>이재호</span>
+          <span style={{color:"#FED37A", paddingLeft:"20px", paddingRight:"20px",}} onClick={averBox2}>한규호</span>
+          <span style={{color:"#FED37A", paddingLeft:"20px", paddingRight:"20px",}} onClick={averBox3}>성하은</span>
+        
+      </footer>
 
       {/* 모달 */}
       <Modal
