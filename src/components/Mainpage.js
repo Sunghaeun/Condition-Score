@@ -10,7 +10,8 @@ import Swal from 'sweetalert2';
 export default function CombinedPage() {
   const [conditions, setConditions] = useState([]);
   const [bodyAvr, setBodyAvr] = useState(0);
-  const [emoAvr, setEmoAvr] = useState(0);  const [selectedData, setSelectedData] = useState(null);
+  const [emoAvr, setEmoAvr] = useState(0);
+  const [selectedData, setSelectedData] = useState(null);
   const navigate = useNavigate();
   
 
@@ -162,7 +163,7 @@ const averBox3 = () => {
 
 
   // 4) 모달 열기/닫기
-
+  const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => setModalOpen(true);
   const closeModal = () => {
     setModalOpen(false);
