@@ -37,8 +37,7 @@ function Home() {
 
 
 
-  function postDataToJSONFile(e) {
-    e.preventDefault();
+
   //   if (!data.userName) {
   //     alert("이름을 입력해 주세요!");
   //     bodyScoreRef.current.focus();
@@ -80,13 +79,13 @@ function Home() {
   //       emoScoreRef.current.focus();
   //       return;
   //   }
-
+  function postDataToJSONFile(e) {
+    e.preventDefault();
     axios.post("https://678f220a49875e5a1a90a2cf.mockapi.io/conditions", data, {
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
         alert("입력이 완료되었습니다.");
-        navigate('/');
         navigate('/');
       })
       .catch((error) => {
